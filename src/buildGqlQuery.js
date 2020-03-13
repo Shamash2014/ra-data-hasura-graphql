@@ -20,6 +20,9 @@ export const buildFragments = introspectionResults => possibleTypes =>
     possibleTypes.reduce((acc, possibleType) => {
         const type = getFinalType(possibleType);
 
+        if (!type) {
+            return acc;
+        }
         const linkedType = introspectionResults.types.find(
             t => t.name === type.name
         );
